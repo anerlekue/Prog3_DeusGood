@@ -129,7 +129,7 @@ public class VentanaRegistro extends JFrame {
 		panel_2.add(txtEmail, gbc_txtEmail);
 		txtEmail.setColumns(10);
 
-		JLabel lblContrasenya = new JLabel("Contrasenya:");
+		JLabel lblContrasenya = new JLabel("Contraseña:");
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.anchor = GridBagConstraints.WEST;
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
