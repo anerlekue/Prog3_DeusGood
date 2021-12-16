@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import java.awt.Font;
@@ -106,8 +107,18 @@ public class VentanaLogin extends JFrame {
 		pAbajo.add(btnR);
 
 		JButton btnAceptar = new JButton("Iniciar Sesion");
-		btnAceptar.setForeground(Color.BLACK);
-		btnAceptar.setBackground(Color.WHITE);
+		btnAceptar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e1) {
+				if (txtNick.getText().equals("") || txtClave.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "Hay que rellenar todos los campos", "ERROR",
+							JOptionPane.ERROR_MESSAGE);
+				}else {
+				ventana.setVisible(false);
+				VentanaPrincipal v3 = new VentanaPrincipal();
+				v3.setVisible(true);}
+			}
+		});
+		
 		pAbajo.add(btnAceptar);
 
 	}
