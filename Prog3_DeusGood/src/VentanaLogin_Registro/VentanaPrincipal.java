@@ -32,7 +32,7 @@ public class VentanaPrincipal extends JFrame{
 		
 		JPanel panelTitulo = new JPanel();
 		contentPane.add(panelTitulo, BorderLayout.NORTH);
-		panelTitulo.setLayout(new MigLayout("", "[65px][180.00px][][][][][][][][][][][][][][][][]", "[29px]"));
+		panelTitulo.setLayout(new MigLayout("", "[65px][180.00px][][][][][][][][][][][][][][][][right]", "[29px]"));
 		
 		JLabel lblNewLabel = new JLabel("Bienvenid@ a DeusGood");
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
@@ -41,6 +41,9 @@ public class VentanaPrincipal extends JFrame{
 		JButton btnTerminos = new JButton("Terminos y condiciones");
 		btnTerminos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ventanaTerminos vt = new ventanaTerminos();
+				vt.setVisible(true);
+						
 				
 			}
 		});
