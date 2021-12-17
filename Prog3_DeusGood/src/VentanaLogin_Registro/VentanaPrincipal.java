@@ -41,9 +41,14 @@ public class VentanaPrincipal extends JFrame{
 		JButton btnTerminos = new JButton("Terminos y condiciones");
 		btnTerminos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+<<<<<<< Updated upstream
 				ventanaTerminos vt = new ventanaTerminos();
 				vt.setVisible(true);
 						
+=======
+				ventanaTerminos v4 = new ventanaTerminos();
+				v4.setVisible(true);
+>>>>>>> Stashed changes
 				
 			}
 		});
