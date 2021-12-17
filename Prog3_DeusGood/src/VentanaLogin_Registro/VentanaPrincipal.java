@@ -58,6 +58,9 @@ public class VentanaPrincipal extends JFrame{
 		JButton BotonPago = new JButton("Pago Estudios");
 		BotonPago.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ventana.setVisible(false);
+				VentanaPagarEstudios v5 = new VentanaPagarEstudios();
+				v5.setVisible(true);
 			}
 		});
 		panel.add(BotonPago);
