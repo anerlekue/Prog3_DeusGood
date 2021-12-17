@@ -97,11 +97,18 @@ public class VentanaDonar extends JFrame {
 		JButton btnDonar = new JButton("Donar");
 		btnDonar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if (chckbxNewCheckBox_1.isSelected()) {
-					
-				}else {
-					JOptionPane.showMessageDialog(null, "Es obligatorio aceptar los Términos y Condiciones", "ERROR",
+				if (textField.getText().equals("")||textField_1.getText().equals("")
+						||textField_2.getText().equals("")||textField_3.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "Es obligatorio rellenar todos los campos.", "ERROR",
 							JOptionPane.ERROR_MESSAGE);
+				}else {
+					if(chckbxNewCheckBox_1.isSelected()) {
+						JOptionPane.showMessageDialog(null, "Donación realizada con éxito.", "Muchas gracias!",
+								JOptionPane.INFORMATION_MESSAGE);
+					}else {
+						JOptionPane.showMessageDialog(null, "Es obligatorio aceptar los Terminos y Condiciones.", "ERROR",
+								JOptionPane.ERROR_MESSAGE);
+					}
 				}
 			}
 		});
