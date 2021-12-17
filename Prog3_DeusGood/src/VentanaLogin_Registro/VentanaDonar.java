@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.ImageIcon;
@@ -62,7 +64,7 @@ public class VentanaDonar extends JFrame {
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.NORTH);
 		
-		JLabel lblTitulo = new JLabel("DONAME TODA TU EXISTENCIA");
+		JLabel lblTitulo = new JLabel("TU DONACIÓN SALVA VIDAS");
 		lblTitulo.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 		panel.add(lblTitulo);
 		
@@ -77,14 +79,14 @@ public class VentanaDonar extends JFrame {
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Pago mensual");
 		panel_4.add(chckbxNewCheckBox);
 		
-		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Terminos y Condiciones");
+		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Aceptar Términos y Condiciones");
 		panel_4.add(chckbxNewCheckBox_1);
 		
 		JLabel lblNewLabel_3 = new JLabel(" ");
 		panel_4.add(lblNewLabel_3);
 		
 		// Import ImageIcon     
-		ImageIcon iconLogo = new ImageIcon("Images/memes.jpeg");
+		ImageIcon iconLogo = new ImageIcon("Images/niño_hungry.jpg");
 		JLabel thumb = new JLabel();
 		thumb.setIcon(iconLogo);
 		panel_1.add(thumb, BorderLayout.CENTER);
@@ -95,6 +97,12 @@ public class VentanaDonar extends JFrame {
 		JButton btnDonar = new JButton("Donar");
 		btnDonar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (chckbxNewCheckBox_1.isSelected()) {
+					
+				}else {
+					JOptionPane.showMessageDialog(null, "Es obligatorio aceptar los Términos y Condiciones", "ERROR",
+							JOptionPane.ERROR_MESSAGE);
+				}
 			}
 		});
 		panel_2.add(btnDonar);
