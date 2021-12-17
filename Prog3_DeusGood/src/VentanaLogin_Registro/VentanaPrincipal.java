@@ -41,14 +41,9 @@ public class VentanaPrincipal extends JFrame{
 		JButton btnTerminos = new JButton("Terminos y condiciones");
 		btnTerminos.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-<<<<<<< Updated upstream
-				ventanaTerminos vt = new ventanaTerminos();
-				vt.setVisible(true);
 						
-=======
 				ventanaTerminos v4 = new ventanaTerminos();
 				v4.setVisible(true);
->>>>>>> Stashed changes
 				
 			}
 		});
@@ -71,6 +66,14 @@ public class VentanaPrincipal extends JFrame{
 		panel.add(BotonPago);
 		
 		JButton btnDonar = new JButton("Donar");
+		btnDonar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ventana.setVisible(false);
+				VentanaDonar v6 = new VentanaDonar();
+				v6.setVisible(true);
+				}
+		});	
+		
 		panel.add(btnDonar);
 		
 		JButton btnSalir = new JButton("Salir");

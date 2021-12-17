@@ -50,6 +50,7 @@ public class VentanaDonar extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaDonar() {
+		JFrame ventana = this;
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 400);
@@ -99,6 +100,13 @@ public class VentanaDonar extends JFrame {
 		panel_2.add(btnDonar);
 		
 		JButton btnVolver = new JButton("Volver");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				ventana.setVisible(false);
+				VentanaPrincipal v7 = new VentanaPrincipal();
+				v7.setVisible(true);
+			}
+		});
 		panel_2.add(btnVolver);
 		
 		JPanel panel_3 = new JPanel();
