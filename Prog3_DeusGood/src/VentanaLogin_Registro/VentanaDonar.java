@@ -31,28 +31,11 @@ public class VentanaDonar extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					VentanaDonar frame = new VentanaDonar();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	/**
 	 * Create the frame.
 	 */
 	public VentanaDonar() {
-		JFrame ventana = this;
+		final JFrame ventana = this;
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 400);
@@ -79,7 +62,7 @@ public class VentanaDonar extends JFrame {
 		JCheckBox chckbxNewCheckBox = new JCheckBox("Pago mensual");
 		panel_4.add(chckbxNewCheckBox);
 		
-		JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Aceptar Términos y Condiciones");
+		final JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Aceptar Términos y Condiciones");
 		panel_4.add(chckbxNewCheckBox_1);
 		
 		JLabel lblNewLabel_3 = new JLabel(" ");

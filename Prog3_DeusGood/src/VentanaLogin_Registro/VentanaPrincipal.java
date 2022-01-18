@@ -21,7 +21,7 @@ public class VentanaPrincipal extends JFrame{
 
 	public VentanaPrincipal() {
 		
-		JFrame ventana = this;
+		final JFrame ventana = this;
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 950, 500);

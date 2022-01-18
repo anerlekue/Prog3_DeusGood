@@ -3,6 +3,8 @@ package VentanaLogin_Registro;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import BD.BD;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.JButton;
 import java.awt.Color;
@@ -25,6 +27,7 @@ public class VentanaLogin extends JFrame {
 	private JPanel contentPane;
 	private JTextField txtNick;
 	private static String nick;
+	private String con;
 	private JPasswordField txtClave;
 
 	public static String getNick() {
@@ -93,7 +96,7 @@ public class VentanaLogin extends JFrame {
 		txtClave.setBackground(Color.WHITE);
 		pCentro.add(txtClave, "cell 2 2,growx");
 
-		JFrame ventana = this;
+		final JFrame ventana = this;
 
 		JButton btnR = new JButton("Registrarse");
 		btnR.addActionListener(new ActionListener() {
@@ -109,13 +112,29 @@ public class VentanaLogin extends JFrame {
 		JButton btnAceptar = new JButton("Iniciar Sesion");
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e1) {
-				if (txtNick.getText().equals("") || txtClave.getText().equals("")) {
-					JOptionPane.showMessageDialog(null, "Hay que rellenar todos los campos", "ERROR",
-							JOptionPane.ERROR_MESSAGE);
-				}else {
-				ventana.setVisible(false);
-				VentanaPrincipal v3 = new VentanaPrincipal();
-				v3.setVisible(true);}
+				
+				int resultado = BD.buscarUsuario(txtNick.getText(), txtClave.getText());
+				if (resultado == 2) {
+					JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "INICIO SESION",
+							JOptionPane.INFORMATION_MESSAGE);
+					nick = txtNick.getText();
+					con = txtClave.getText();
+
+					ventana.setVisible(false);
+					if (nick.equals("admin") && con.equals("admin1")) {
+						//VentanaPrincipalAdmin vpa = new VentanaPrincipalAdmin();
+						//vpa.setVisible(true);
+					} else {
+						VentanaPrincipal vpc = new VentanaPrincipal();
+						vpc.setVisible(true);
+					}
+
+				} else if (resultado == 1) {
+					JOptionPane.showMessageDialog(null, "Clave incorrecta", "ERROR", JOptionPane.ERROR_MESSAGE);
+				} else {
+					JOptionPane.showMessageDialog(null, "Usuario desconocido", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}
+				vaciarCampos();
 			}
 		});
 		

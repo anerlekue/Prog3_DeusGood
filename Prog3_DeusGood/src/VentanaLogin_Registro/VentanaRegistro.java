@@ -44,7 +44,7 @@ public class VentanaRegistro extends JFrame {
 		JPanel panel_1 = new JPanel();
 		contentPane.add(panel_1, BorderLayout.SOUTH);
 
-		JFrame ventana = this;
+		final JFrame ventana = this;
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
