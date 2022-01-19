@@ -2,6 +2,8 @@ package BD;
 
 import java.sql.*;
 
+import BaseDeDatos.BD;
+
 public class BD {
 	
 	private static Exception lastError = null;
@@ -35,7 +37,7 @@ public class BD {
 			Statement statement = con.createStatement();
 			statement.setQueryTimeout(30); // poner timeout 30 msg
 			try {
-				statement.executeUpdate("create table usuario " + "(nick string, contrasenya string, email string)");
+				statement.executeUpdate("create table usuario " + "(nick string, email string, contrasenya string)");
 			} catch (SQLException e) {
 			} // Tabla ya existe. Nada que hacer
 			return statement;
@@ -81,9 +83,9 @@ public class BD {
 			if (rs.next()) {
 				String cl = rs.getString(2);
 				if (cl.equals(contrasenya)) {
-					resultado = 2;
-				} else {
 					resultado = 1;
+				} else {
+					resultado = 2;
 				}
 			} else {
 				resultado = 0;
@@ -99,7 +101,7 @@ public class BD {
 	public static void registrarUsuario(String nick, String email, String contrasenya) {
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
-		String sql = "INSERT INTO usuario VALUES('" + nick + "','" + contrasenya + "','" + email + "')";
+		String sql = "INSERT INTO usuario VALUES('" + nick + "','" + email + "','" + contrasenya + "')";
 		try {
 			st.executeUpdate(sql);
 
@@ -109,7 +111,29 @@ public class BD {
 		}
 		cerrarBD(con, st);
 	}
-	
+	public static int buscarNombreUsuario(String nick) {
+		int resultado = 0;
+		String query = "SELECT * FROM usuario WHERE nick='" + nick + "'";
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		try {
+			ResultSet rs = st.executeQuery(query);
+			if (rs.next()) {
+				String cl = rs.getString(1);
+				if (cl.equals(nick)) {
+					resultado = 1; // nombres iguales
+				}
+			} else {
+				resultado = 0; // no encontrado
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cerrarBD(con, st);
+		return resultado;
+
+	}
 	
 	
 	

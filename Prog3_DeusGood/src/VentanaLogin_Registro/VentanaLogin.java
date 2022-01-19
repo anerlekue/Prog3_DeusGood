@@ -122,8 +122,8 @@ public class VentanaLogin extends JFrame {
 
 					ventana.setVisible(false);
 					if (nick.equals("admin") && con.equals("admin1")) {
-						//VentanaPrincipalAdmin vpa = new VentanaPrincipalAdmin();
-						//vpa.setVisible(true);
+						VentanaAdmin vpa = new VentanaAdmin();
+						vpa.setVisible(true);
 					} else {
 						VentanaPrincipal vpc = new VentanaPrincipal();
 						vpc.setVisible(true);
