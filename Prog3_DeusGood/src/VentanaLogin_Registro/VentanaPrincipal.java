@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.BorderLayout;
 import javax.swing.JLabel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -51,6 +52,12 @@ public class VentanaPrincipal extends JFrame{
 		
 		JPanel panelCentro = new JPanel();
 		contentPane.add(panelCentro, BorderLayout.CENTER);
+		panelCentro.setLayout(new BorderLayout(0, 0));
+		
+		ImageIcon iconLogo = new ImageIcon("Images/imagen_principal.jpg");
+		JLabel icon = new JLabel();
+		icon.setIcon(iconLogo);
+		panelCentro.add(icon, BorderLayout.CENTER);
 		
 		JPanel panel = new JPanel();
 		contentPane.add(panel, BorderLayout.SOUTH);
