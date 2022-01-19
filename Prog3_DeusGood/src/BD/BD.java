@@ -1,8 +1,8 @@
 package BD;
 
 import java.sql.*;
-
-import BaseDeDatos.BD;
+import java.util.Date;
+import java.util.logging.Level;
 
 public class BD {
 	
@@ -133,6 +133,20 @@ public class BD {
 		cerrarBD(con, st);
 		return resultado;
 
+	}
+	public static void cambiarContrasenyaUsuario(String nombre, String nuevaContrasenya) {
+		Connection con = BD.initBD("BaseDeDatos.db");
+
+		Statement st = BD.usarBD(con);
+		String sql = "UPDATE usuario SET clave ='" + nuevaContrasenya + "' WHERE nick ='" + nombre + "'";
+		try {
+			st.executeUpdate(sql);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cerrarBD(con, st);
 	}
 	
 	
