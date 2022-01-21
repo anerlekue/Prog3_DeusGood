@@ -149,6 +149,20 @@ public class BD {
 		cerrarBD(con, st);
 	}
 	
+	public static void cambiarNombreUsuario(String nombre, String nuevoNombre) {
+        Connection con = BD.initBD("BaseDeDatos.db");
+        Statement st = BD.usarBD(con);
+        String sql = "UPDATE usuario SET nick ='" + nuevoNombre + "' WHERE nick ='" + nombre + "'";
+        try {
+            st.executeUpdate(sql);
+
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        cerrarBD(con, st);
+    }
+	
 	
 	
 	public static Exception getLastError() {

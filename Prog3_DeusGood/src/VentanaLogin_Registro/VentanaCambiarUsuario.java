@@ -1,4 +1,4 @@
-package Swing;
+package VentanaLogin_Registro;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import BaseDeDatos.BD;
+import BD.BD;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
