@@ -117,8 +117,8 @@ public class VentanaAdmin extends JFrame {
 		JButton btnNewButton = new JButton("Cambiar Nombre Usuario");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//VentanaCambiarNombreUsuario vn = new VentanaCambiarNombreUsuario();
-				//vn.setVisible(true);
+				VentanaCambiarUsuario vn = new VentanaCambiarUsuario();
+				vn.setVisible(true);
 				ventana.setVisible(false);
 
 			}
@@ -133,8 +133,8 @@ public class VentanaAdmin extends JFrame {
 		JButton btnNewButton_3 = new JButton("Cambiar Clave Usuario");
 		btnNewButton_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//VentanaCambiarContrasenya vc = new VentanaCambiarContrasenya();
-				//vc.setVisible(true);
+				VentanaCambiarContrasenya vc = new VentanaCambiarContrasenya();
+				vc.setVisible(true);
 				ventana.setVisible(false);
 			}
 		});
