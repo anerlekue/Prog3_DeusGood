@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import BD.BD;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
@@ -31,6 +34,7 @@ public class VentanaDonar extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	private int j = 0;
 	/**
 	 * Create the frame.
 	 */
@@ -59,7 +63,7 @@ public class VentanaDonar extends JFrame {
 		panel_1.add(panel_4, BorderLayout.SOUTH);
 		panel_4.setLayout(new GridLayout(0, 2, 0, 0));
 		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("Pago mensual");
+		final JCheckBox chckbxNewCheckBox = new JCheckBox("Pago mensual");
 		panel_4.add(chckbxNewCheckBox);
 		
 		final JCheckBox chckbxNewCheckBox_1 = new JCheckBox("Aceptar Términos y Condiciones");
@@ -86,8 +90,17 @@ public class VentanaDonar extends JFrame {
 							JOptionPane.ERROR_MESSAGE);
 				}else {
 					if(chckbxNewCheckBox_1.isSelected()) {
+						if (chckbxNewCheckBox.isSelected()){
+							j = 1;
+						}
+						
+						BD.Donar(textField.getText(),textField_2.getText(),j);
+						
 						JOptionPane.showMessageDialog(null, "Donación realizada con éxito.", "Muchas gracias!",
 								JOptionPane.INFORMATION_MESSAGE);
+						ventana.setVisible(false);
+						VentanaPrincipal v7 = new VentanaPrincipal();
+						v7.setVisible(true);
 					}else {
 						JOptionPane.showMessageDialog(null, "Es obligatorio aceptar los Terminos y Condiciones.", "ERROR",
 								JOptionPane.ERROR_MESSAGE);
@@ -186,7 +199,7 @@ public class VentanaDonar extends JFrame {
 		gbc_lblNewLabel_4.gridy = 6;
 		panel_3.add(lblNewLabel_4, gbc_lblNewLabel_4);
 		
-		JLabel lblCE = new JLabel("Correo Electronico :");
+		JLabel lblCE = new JLabel("Donar catidad :");
 		GridBagConstraints gbc_lblCE = new GridBagConstraints();
 		gbc_lblCE.insets = new Insets(0, 0, 0, 5);
 		gbc_lblCE.gridx = 0;

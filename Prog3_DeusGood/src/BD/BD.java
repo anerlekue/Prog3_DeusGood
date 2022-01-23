@@ -38,6 +38,7 @@ public class BD {
 			statement.setQueryTimeout(30); // poner timeout 30 msg
 			try {
 				statement.executeUpdate("create table usuario " + "(nick string, email string, contrasenya string)");
+				statement.executeUpdate("create table donantes " + "(nick string, numCuenta int, cantidadDonada int, pagomensual int)");
 			} catch (SQLException e) {
 			} // Tabla ya existe. Nada que hacer
 			return statement;
@@ -138,7 +139,7 @@ public class BD {
 		Connection con = BD.initBD("BaseDeDatos.db");
 
 		Statement st = BD.usarBD(con);
-		String sql = "UPDATE usuario SET clave ='" + nuevaContrasenya + "' WHERE nick ='" + nombre + "'";
+		String sql = "UPDATE usuario SET contrasenya ='" + nuevaContrasenya + "' WHERE nick ='" + nombre + "'";
 		try {
 			st.executeUpdate(sql);
 
@@ -162,7 +163,19 @@ public class BD {
         }
         cerrarBD(con, st);
     }
-	
+	public static void Donar(String numCuenta, String cantidad, int pagoMensual) {
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		String sql = "INSERT INTO donantes VALUES('" + numCuenta + "','" + cantidad +"','" + pagoMensual + "')";
+		try {
+			st.executeUpdate(sql);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cerrarBD(con, st);
+	}
 	
 	
 	public static Exception getLastError() {
