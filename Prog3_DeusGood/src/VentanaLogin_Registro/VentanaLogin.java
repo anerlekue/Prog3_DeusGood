@@ -114,7 +114,7 @@ public class VentanaLogin extends JFrame {
 			public void actionPerformed(ActionEvent e1) {
 				
 				int resultado = BD.buscarUsuario(txtNick.getText(), txtClave.getText());
-				if (resultado == 2) {
+				if (resultado == 1) {
 					JOptionPane.showMessageDialog(null, "Inicio de sesion correcto", "INICIO SESION",
 							JOptionPane.INFORMATION_MESSAGE);
 					nick = txtNick.getText();
@@ -129,7 +129,7 @@ public class VentanaLogin extends JFrame {
 						vpc.setVisible(true);
 					}
 
-				} else if (resultado == 1) {
+				} else if (resultado == 2) {
 					JOptionPane.showMessageDialog(null, "Clave incorrecta", "ERROR", JOptionPane.ERROR_MESSAGE);
 				} else {
 					JOptionPane.showMessageDialog(null, "Usuario desconocido", "ERROR", JOptionPane.ERROR_MESSAGE);

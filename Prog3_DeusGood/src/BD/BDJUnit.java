@@ -15,8 +15,8 @@ public class BDJUnit {
 	public void RegistrarUsuario() {
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
-		BD.registrarUsuario("test", "test", "test@gmail.com");
-		int enc = BD.buscarUsuario("test", "test");
+		BD.registrarUsuario("test", "test@gmail.com", "test1");
+		int enc = BD.buscarUsuario("test", "test1");
 		assertEquals(2, enc);
 	}
 
@@ -33,8 +33,8 @@ public class BDJUnit {
 	public void BuscarNombreUsuario() {
 		Connection con = BD.initBD("BaseDeDatos.db");
 		Statement st = BD.usarBD(con);
-		int enc = BD.buscarNombreUsuario("alvaro");
-		assertEquals(0, enc);
+		int enc = BD.buscarNombreUsuario("1");
+		assertEquals(1, enc);
 	}
 
 

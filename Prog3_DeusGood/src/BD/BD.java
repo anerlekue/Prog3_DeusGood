@@ -82,7 +82,7 @@ public class BD {
 		try {
 			ResultSet rs = st.executeQuery(query);
 			if (rs.next()) {
-				String cl = rs.getString(2);
+				String cl = rs.getString(3);
 				if (cl.equals(contrasenya)) {
 					resultado = 1;
 				} else {
