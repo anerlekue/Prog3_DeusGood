@@ -83,8 +83,8 @@ public class VentanaAdmin extends JFrame {
 		JButton btnNewButton_1 = new JButton("Anyadir Nino BD");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//VentanaAnyadirNino vn = new VentanaAnyadirNino();
-				//vn.setVisible(true);
+				VentanaAnyadirNino vn = new VentanaAnyadirNino();
+				vn.setVisible(true);
 				ventana.setVisible(false);
 
 			}
@@ -100,8 +100,8 @@ public class VentanaAdmin extends JFrame {
 		JButton btnNewButton_2 = new JButton("Eliminar Nino BD");
 		btnNewButton_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//VentanaEliminarNino vn = new VentanaEliminarNino();
-				//vn.setVisible(true);
+				VentanaEliminarNino vn = new VentanaEliminarNino();
+				vn.setVisible(true);
 				ventana.setVisible(false);
 
 			}
@@ -145,6 +145,20 @@ public class VentanaAdmin extends JFrame {
 		gbc_btnNewButton_3.gridx = 1;
 		gbc_btnNewButton_3.gridy = 4;
 		panel_2.add(btnNewButton_3, gbc_btnNewButton_3);
+		
+		JButton btnNewButton_4 = new JButton("Estadisticas");
+		btnNewButton_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VentanaEstadisticas ve = new VentanaEstadisticas();
+				ve.setVisible(true);
+				ventana.setVisible(false);
+			}
+		});
+		GridBagConstraints gbc_btnNewButton_4 = new GridBagConstraints();
+		gbc_btnNewButton_4.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewButton_4.gridx = 1;
+		gbc_btnNewButton_4.gridy = 5;
+		panel_2.add(btnNewButton_4, gbc_btnNewButton_4);
 
 	}
 }

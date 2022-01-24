@@ -176,8 +176,196 @@ public class BD {
 		}
 		cerrarBD(con, st);
 	}
+	public static void anyadirNino(String nombre, String edad, String peso, String sexo) {
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		String sql = "INSERT INTO ninos VALUES('" + nombre + "','" + edad + "','" + peso + "','" + sexo +"')";
+		try {
+			st.executeUpdate(sql);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cerrarBD(con, st);
+	}
 	
+	public static void eliminarNino(String nombre) {
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		String sql = "DELETE FROM ninos WHERE nombre ='" + nombre + "'";
+		try {
+			st.executeUpdate(sql);
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cerrarBD(con, st);
+	}
+	public static int buscarNino(String nombre) {
+		int resultado = 0;
+		String query = "SELECT * FROM ninos WHERE nombre='" + nombre + "'";
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		try {
+			ResultSet rs = st.executeQuery(query);
+			if (rs.next()) {
+				String cl = rs.getString(1);
+				if (cl.equals(nombre)) {
+					resultado = 1; // nombres iguales
+				}
+			} else {
+				resultado = 0; // no encontrado
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		cerrarBD(con, st);
+		return resultado;
+
+	}
+	public static String mediaEdad() {
+		float media = 0;
+		String sql = "SELECT edad FROM ninos";
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		int i =0;
+		try {
+			ResultSet rs = st.executeQuery(sql);
+			while (rs.next()) {
+				media = media + rs.getFloat("edad");
+				i++;
+			}	
+			media = media/i;
+			rs.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+
+		cerrarBD(con, st);		
+		return String.valueOf(media);
+	}
+	public static String DineroRecaudado() {
+		float dinero = 0;
+		String sql = "SELECT cantidadDonanda FROM donantes";
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		try {
+			ResultSet rs = st.executeQuery(sql);
+			while (rs.next()) {
+				dinero = dinero + rs.getFloat("cantidadDonanda");
+			}	
+			rs.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+
+		cerrarBD(con, st);		
+		return String.valueOf(dinero);
+	}
+	public static String PagoMensuales() {
+		int pg = 0;
+		String sql = "SELECT pagoMensual FROM donantes";
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		try {
+			ResultSet rs = st.executeQuery(sql);
+			while (rs.next()) {
+				if (rs.getFloat("pagoMensual")==1) {
+					pg++;
+				}
 	
+			}	
+			rs.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+
+		cerrarBD(con, st);		
+		return String.valueOf(pg);
+	}
+	public static String GetNinos() {
+		int ninos = 0;
+		String sql = "SELECT * FROM ninos";
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		try {
+			ResultSet rs = st.executeQuery(sql);
+		
+			while (rs.next()) {
+				String cl = rs.getString(4);
+				if (cl.equals("Nino")) {
+					ninos++;
+				}
+	
+			}	
+			rs.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+
+		cerrarBD(con, st);		
+		return String.valueOf(ninos);
+	}
+	public static String GetNinas() {
+		int ninas = 0;
+		String sql = "SELECT * FROM ninos";
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		try {
+			ResultSet rs = st.executeQuery(sql);
+		
+			while (rs.next()) {
+				String cl = rs.getString(4);
+				if (cl.equals("Nina")) {
+					ninas++;
+				}
+	
+			}	
+			rs.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+
+		cerrarBD(con, st);		
+		return String.valueOf(ninas);
+	}
+	public static String getMayorDonacion() {
+		int maximo = 0;
+		String sql = "SELECT cantidadDonanda FROM donantes";
+		Connection con = BD.initBD("BaseDeDatos.db");
+		Statement st = BD.usarBD(con);
+		try {
+			ResultSet rs = st.executeQuery(sql);
+		
+			while (rs.next()) {
+				if (rs.getInt("cantidadDonanda")> maximo) {
+					maximo = rs.getInt("cantidadDonanda");
+				}
+	
+			}	
+			rs.close();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}	
+
+		cerrarBD(con, st);		
+		return String.valueOf(maximo);
+	}
 	public static Exception getLastError() {
 		return lastError;
 	}

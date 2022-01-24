@@ -140,9 +140,5 @@ public class VentanaLogin extends JFrame {
 		
 		pAbajo.add(btnAceptar);
 
-	}
-	public static void main(String[] args) {
-					VentanaLogin frame = new VentanaLogin();
-					frame.setVisible(true);
-		}									
-	}
+	}								
+}
